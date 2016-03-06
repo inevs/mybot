@@ -1,7 +1,8 @@
 DEVICE     = atmega1284p
 CLOCK      = 16000000
 PROGRAMMER = -c avrispv2 -P usb
-OBJECTS    = src/main.o
+OBJECTS    = src/main.o \
+			 src/botlib/led.o
 			 # src/motor.o \
 			 # src/shift.o \
 			 # src/display.o \
