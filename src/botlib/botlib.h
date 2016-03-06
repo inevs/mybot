@@ -3,5 +3,6 @@
 
 #include "defines.h"
 #include "led.h"
+#include "display.h"
 
 #endif

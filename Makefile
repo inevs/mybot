@@ -4,10 +4,10 @@ PROGRAMMER = -c avrispv2 -P usb
 OBJECTS    = src/main.o \
 			 src/botlib/shift.o \
 			 src/botlib/led.o \
+			 src/botlib/display.o \
 			 src/botlib/tests.o
 			 # src/motor.o \
 			 # src/shift.o \
-			 # src/display.o \
 			 # src/ports.o
 
 AVRDUDE = avrdude $(PROGRAMMER) -p $(DEVICE)

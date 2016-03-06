@@ -5,6 +5,4 @@
 
 void shiftLED(uint8_t data);
 
-
-
 #endif

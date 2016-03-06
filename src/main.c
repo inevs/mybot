@@ -13,7 +13,8 @@ int main(void) {
     setup();
 
     while(1) {
-        testLED();
+        //testLED();
+        testLCD();
     }
     return 0;
 }
