@@ -5,7 +5,8 @@ OBJECTS    = src/main.o \
 			 src/botlib/shift.o \
 			 src/botlib/led.o \
 			 src/botlib/display.o \
-			 src/botlib/tests.o
+			 src/botlib/sensors.o \
+			 src/botlib/tests.o 
 			 # src/motor.o \
 			 # src/shift.o \
 			 # src/ports.o

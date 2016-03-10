@@ -2,6 +2,7 @@
 
 #include "tests.h"
 #include "botlib.h"
+#include "sensors.h"
 
 void delay(int time) {
 	_delay_ms(100);
@@ -18,8 +19,6 @@ void testLED(void) {
 }
 
 void testLCD(void) {
-    lcdInit();
-
     lcdSetCursor(0, 0);
     lcdPrintf("Hallo");
     lcdSetCursor(1, 0);
@@ -28,15 +27,42 @@ void testLCD(void) {
     lcdPrintf("ich liebe dich");
     lcdSetCursor(3, 0);
     lcdPrintf("XOXOXOXO");
-
-
-
-//	uint8_t i;
-//	for (i = 0; i < 4; i++) {
-//		lcdClear();
-//		lcdSetCursor(i, i);
-//		lcdPrintf("Test %d, 0x%x, %.2f", i, i, (float) i);
-//		delay(10000);
-//	}
 }
 
+void testAnalogSensor() {
+	uint8_t i;
+
+	for(i=0;i<8;i++) {
+		lcdClear();
+		lcdPrintf("Sensor %d: %d",i,getAnalog(i));
+		delay(10000);
+	}
+}
+
+void testDigitalSensor() {
+	uint8_t i;
+
+	for(i=0;i<30;i++) {
+		lcdClear();
+		lcdPrintf("Schranke: %d",getDigital(SCHRANKE));
+		lcdSetCursor(1,0);
+		lcdPrintf("Klappe: %d",getDigital(KLAPPE));
+		lcdSetCursor(2,0);
+		lcdPrintf("Rad l.: %d",getDigital(RADL));
+		lcdSetCursor(3,0);
+		lcdPrintf("Rad r.: %d",getDigital(RADR));
+		delay(1000);
+	}
+}
+
+void testMouseSensor() {
+//	uint8_t i;
+//
+//	for(i=0;i<30;i++) {
+//		lcdClear();
+//		lcdPrintf("X: %d",readDX());
+//		lcdSetCursor(1,0);
+//		lcdPrintf("Y: %d",readDY());
+//		delay(1000);
+//	}
+}

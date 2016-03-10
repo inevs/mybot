@@ -6,6 +6,7 @@
 
 void setup() {
 	initLeds();
+    lcdInit();
 }
 
 int main(void) {
@@ -13,8 +14,9 @@ int main(void) {
     setup();
 
     while(1) {
-        //testLED();
-        testLCD();
+        // testLED();
+    	// testLCD();
+    	testDigitalSensor();
     }
     return 0;
 }
