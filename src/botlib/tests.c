@@ -19,22 +19,22 @@ void testLED(void) {
 }
 
 void testLCD(void) {
-    lcdSetCursor(0, 0);
-    lcdPrintf("Hallo");
-    lcdSetCursor(1, 0);
-    lcdPrintf("mein Schatz");
-    lcdSetCursor(2, 0);
-    lcdPrintf("ich liebe dich");
-    lcdSetCursor(3, 0);
-    lcdPrintf("XOXOXOXO");
+	lcdSetCursor(0, 0);
+	lcdPrintf("Hallo");
+	lcdSetCursor(1, 0);
+	lcdPrintf("mein Schatz");
+	lcdSetCursor(2, 0);
+	lcdPrintf("ich liebe dich");
+	lcdSetCursor(3, 0);
+	lcdPrintf("XOXOXOXO");
 }
 
 void testAnalogSensor() {
 	uint8_t i;
 
-	for(i=0;i<8;i++) {
+	for (i = 0; i < 8; i++) {
 		lcdClear();
-		lcdPrintf("Sensor %d: %d",i,getAnalog(i));
+		lcdPrintf("Sensor %d: %d", i, getAnalog(i));
 		delay(10000);
 	}
 }
@@ -42,15 +42,15 @@ void testAnalogSensor() {
 void testDigitalSensor() {
 	uint8_t i;
 
-	for(i=0;i<30;i++) {
+	for (i = 0; i < 30; i++) {
 		lcdClear();
-		lcdPrintf("Schranke: %d",getDigital(SCHRANKE));
-		lcdSetCursor(1,0);
-		lcdPrintf("Klappe: %d",getDigital(KLAPPE));
-		lcdSetCursor(2,0);
-		lcdPrintf("Rad l.: %d",getDigital(RADL));
-		lcdSetCursor(3,0);
-		lcdPrintf("Rad r.: %d",getDigital(RADR));
+		lcdPrintf("Schranke: %d", getDigital(SCHRANKE));
+		lcdSetCursor(1, 0);
+		lcdPrintf("Klappe: %d", getDigital(KLAPPE));
+		lcdSetCursor(2, 0);
+		lcdPrintf("Rad l.: %d", getDigital(RADL));
+		lcdSetCursor(3, 0);
+		lcdPrintf("Rad r.: %d", getDigital(RADR));
 		delay(1000);
 	}
 }

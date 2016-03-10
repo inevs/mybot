@@ -6,7 +6,8 @@
 
 void setup() {
 	initLeds();
-    lcdInit();
+    initLcd();
+    initSensors();
 }
 
 int main(void) {
