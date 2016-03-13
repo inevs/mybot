@@ -16,6 +16,7 @@ int main(void) {
 
     enableSensor(ENA_RADLED);
     enableSensor(ENA_SCHRANKE);
+    enableSensor(ENA_KANTLED);
     enableSensor(ENA_KLAPPLED);
 
     while(1) {

@@ -30,12 +30,12 @@ void initADC() {
 	}
 }
 
-void disableSensor(uint8_t id) {
+void disableSensor(SENSORTYPE id) {
 	sensorState |= (1 << id);
 	shiftSensors(sensorState);
 }
 
-void enableSensor(uint8_t id) {
+void enableSensor(SENSORTYPE id) {
 	sensorState &= ~(1 << id);
 	shiftSensors(sensorState);
 }
