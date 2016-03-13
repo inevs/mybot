@@ -10,9 +10,14 @@ typedef enum  { ABSTL=0, ABSTR, LINEL, LINER, LDRL, LDRR, KANTEL, KANTER, VOLTAG
 #define RADR PD3
 #define SENSOR_DIGITAL uint8_t
 
+#define ENA_RADLED 1
+#define ENA_SCHRANKE 2
+#define ENA_SCHRANKE 3
+#define ENA_KLAPPLED 4
+
 void initSensors();
-void disable(SENSORTYPE id);
-void enable(SENSORTYPE id);
+void disableSensor(uint8_t id);
+void enableSensor(uint8_t id);
 uint16_t getAnalog(SENSOR_ANALOG id);
 uint8_t getDigital(SENSOR_DIGITAL id);
 

@@ -31,7 +31,6 @@ void testLCD(void) {
 
 void testAnalogSensor() {
 	uint8_t i;
-
 	for (i = 0; i < 8; i++) {
 		lcdClear();
 		lcdPrintf("Sensor %d: %d", i, getAnalog(i));
@@ -41,7 +40,6 @@ void testAnalogSensor() {
 
 void testDigitalSensor() {
 	uint8_t i;
-
 	for (i = 0; i < 30; i++) {
 		lcdClear();
 		lcdPrintf("Schranke: %d", getDigital(SCHRANKE));

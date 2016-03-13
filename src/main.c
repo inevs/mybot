@@ -14,9 +14,11 @@ int main(void) {
 
     setup();
 
+    enableSensor(ENA_RADLED);
+    enableSensor(ENA_SCHRANKE);
+    enableSensor(ENA_KLAPPLED);
+
     while(1) {
-        // testLED();
-    	// testLCD();
     	testDigitalSensor();
     }
     return 0;
