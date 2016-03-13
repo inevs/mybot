@@ -29,6 +29,15 @@ all:	main.hex
 flash:	all
 	$(AVRDUDE) -U flash:w:main.hex:i
 
+test-analog:
+	$(AVRDUDE) -U flash:w:test-bin/ct-Bot-analog.hex:i
+
+test-digital:
+	$(AVRDUDE) -U flash:w:test-bin/ct-Bot-digital.hex:i
+
+test-motor:
+	$(AVRDUDE) -U flash:w:test-bin/ct-Bot-motor.hex:i
+
 load: all
 	bootloadHID main.hex
 
