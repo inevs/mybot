@@ -8,19 +8,16 @@ void setup() {
 	initLeds();
     initLcd();
     initSensors();
+    enableDigitalSensors();
+    enableAnalogSensors();
 }
 
 int main(void) {
 
     setup();
 
-    enableSensor(ENA_RADLED);
-    enableSensor(ENA_SCHRANKE);
-    enableSensor(ENA_KANTLED);
-    enableSensor(ENA_KLAPPLED);
-
     while(1) {
-    	testDigitalSensor();
+    	testMouseSensor();
     }
     return 0;
 }

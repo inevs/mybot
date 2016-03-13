@@ -29,16 +29,49 @@ void testLCD(void) {
 	lcdPrintf("XOXOXOXO");
 }
 
-void testAnalogSensor() {
-	uint8_t i;
-	for (i = 0; i < 8; i++) {
-		lcdClear();
-		lcdPrintf("Sensor %d: %d", i, getAnalog(i));
-		delay(10000);
-	}
+void testLichtSensoren() {
+	lcdClear();
+	lcdSetCursor(0, 0);
+	lcdPrintf("Sensor LDRL: %d", getAnalog(LDRL));
+	lcdSetCursor(1, 0);
+	lcdPrintf("Sensor LDRR: %d", getAnalog(LDRR));
 }
 
-void testDigitalSensor() {
+void testKantenSensoren() {
+	lcdSetCursor(2, 0);
+	lcdPrintf("Sensor KANTE_L: %d", getAnalog(KANTEL));
+	lcdSetCursor(3, 0);
+	lcdPrintf("Sensor KANTE_R: %d", getAnalog(KANTER));
+	delay(10000);
+}
+
+void testAbstandsSensoren() {
+	lcdSetCursor(1, 0);
+	lcdPrintf("Abstand links: %d", getAnalog(ABSTL));
+	lcdSetCursor(2, 0);
+	lcdPrintf("Abstand rechts: %d", getAnalog(ABSTR));
+	delay(10000);
+}
+
+void testLinienSensors() {
+	lcdSetCursor(1, 0);
+	lcdPrintf("Linie links: %d", getAnalog(LINEL));
+	lcdSetCursor(2, 0);
+	lcdPrintf("Linie rechts: %d", getAnalog(LINER));
+	delay(10000);
+}
+
+void testAnalogSensors() {
+	/*	uint8_t i;
+	 for (i = 0; i < 8; i++) {
+	 lcdClear();
+	 lcdPrintf("Sensor %d: %d", i, getAnalog(i));
+	 delay(10000);
+	 }
+	 */
+}
+
+void testDigitalSensors() {
 	uint8_t i;
 	for (i = 0; i < 30; i++) {
 		lcdClear();
@@ -54,13 +87,10 @@ void testDigitalSensor() {
 }
 
 void testMouseSensor() {
-//	uint8_t i;
-//
-//	for(i=0;i<30;i++) {
-//		lcdClear();
-//		lcdPrintf("X: %d",readDX());
-//		lcdSetCursor(1,0);
-//		lcdPrintf("Y: %d",readDY());
-//		delay(1000);
-//	}
+	lcdClear();
+	lcdSetCursor(0, 0);
+	lcdPrintf("X: %d", readDX());
+	lcdSetCursor(1, 0);
+	lcdPrintf("Y: %d", readDY());
+	delay(500);
 }

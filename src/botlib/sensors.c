@@ -10,7 +10,6 @@ void initSensors() {
 	DDRA = 0x00;
 	PORTA = 0x00;
 
-	// Enable all sensors
 	sensorState = 0xFF;
 	shiftSensors(sensorState);
 
@@ -18,11 +17,11 @@ void initSensors() {
 }
 
 void initADC() {
-	uint8_t i;
 	// ADC
 	ADMUX = 0x40; // VCC as Vref
-
 	ADCSRA = (1 << ADEN) | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); // 128x Prescaler
+
+	uint8_t i;
 	for (i = 0; i < 2; i++) {
 		ADCSRA |= (1 << ADSC); // Start Conversion
 		while ((ADCSRA & (1 << ADSC)) != 0)
@@ -38,6 +37,18 @@ void disableSensor(SENSORTYPE id) {
 void enableSensor(SENSORTYPE id) {
 	sensorState &= ~(1 << id);
 	shiftSensors(sensorState);
+}
+
+void enableDigitalSensors() {
+    enableSensor(ENA_RADLED);
+    enableSensor(ENA_SCHRANKE);
+    enableSensor(ENA_KLAPPLED);
+}
+
+void enableAnalogSensors() {
+	enableSensor(ENA_KANTLED);
+	enableSensor(ENA_ABSTAND);
+	enableSensor(ENA_MAUS);
 }
 
 uint16_t getAnalog(SENSOR_ANALOG id) {

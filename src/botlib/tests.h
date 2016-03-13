@@ -3,9 +3,13 @@
 
 void testLED(void);
 void testLCD(void);
-void testAnalogSensor();
-void testDigitalSensor();
+void testAnalogSensors();
+void testDigitalSensors();
 void testMouseSensor();
-
+void testLichtSensoren();
+void testKantenSensoren();
+void testAbstandsSensoren();
+void testLinienSensors();
+void testMouseSensor();
 
 #endif

@@ -6,5 +6,6 @@
 #include "led.h"
 #include "display.h"
 #include "sensors.h"
+#include "maus.h"
 
 #endif
