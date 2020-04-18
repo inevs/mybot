@@ -17,7 +17,7 @@ int main(void) {
     setup();
 
     while(1) {
-    	testLED();
+    	testLCD();
     }
     return 0;
 }

@@ -14,16 +14,17 @@ void initLcd() {
 	// Set outputs for SDI, register RCLK, SRCLK
 	DDRC |= (1 << PC0) | (1 << PC1) | (1 << PC2);
 
-	_delay_ms(15);
-	_delay_ms(15);
-	_delay_ms(11);
+	_delay_ms(40);
 
 	lcdsendcmd(0x38);	// 2-line mode, 5x8pixel per character
 	_delay_us(40);		// Sleep 40µs
-	lcdsendcmd(0x0C);	// Disply off
-	_delay_us(40);		// Sleep 4µs
+
+	lcdsendcmd(0x0C);	// Disply on, Cursor off, blink off
+	_delay_us(40);		// Sleep 40µs
+
 	lcdsendcmd(0x01);	// Display clear
-	_delay_ms(1.5);		// Sleep 1.5ms
+	_delay_ms(1.6);		// Sleep 1.52ms
+
 	lcdsendcmd(0x06);	// EntryMode increment, entire shift off
 	_delay_ms(1.5);		// Sleep 1.5ms
 }
@@ -49,7 +50,7 @@ void lcdPrintf(const char *s, ...) {
 	va_list args;
 
 	va_start(args, s); // Initialize va_list args
-	vsnprintf(buffer,20,s,args); // Format output
+	vsnprintf(buffer, 20, s, args); // Format output
 	va_end(args);
 
 	// Print each character
@@ -91,7 +92,7 @@ void lcdSend(char data, int mode) {
 	PORTC &= ~(1 << PC0);	// RS = 0
 
 	PORTC |= (1 << PC2); // Activate display (Enable=1)
-	if (mode == 1) {
+	if (mode == MODE_DATA) {
 		PORTC |= (1 << PC0);  // Data mode (RS=0)
 	}
 	PORTC &= ~(1 << PC1); // Write mode (R/W=0)
