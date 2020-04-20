@@ -19,8 +19,10 @@ int main(void) {
     setup();
     sei();
 
-    while(1) {      
-        testLCD();
+    uint8_t val = ((XTAL/64/TIMER_2_CLOCK) - 1);
+
+    while(1) {
+        lcdPrintf("val = %d", val);
     }
     
     return 0;
