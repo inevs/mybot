@@ -1,9 +1,10 @@
 #include <avr/interrupt.h>
 #include "timer.h"
-#include "led.h"
+#include "rc5.h"
 
-bool ledSet = false;
-uint16_t count = 0;
+void initRC5() {
+    DDRB &= ~(1 << FERNBED);
+}
 
 void initTimer() {
     TCNT2 = 0x00;
@@ -13,24 +14,36 @@ void initTimer() {
     OCR2A = (25 - 1); // ISR call every 100µs
 
     TIMSK2 |= _BV(OCIE2A);
+
+    initRC5();
 }
 
-void toggleLED(uint8_t nr) {
-    if (ledSet) {
-        clearLed(nr);
-        ledSet = false;
-    } else {
-        setLed(nr);
-        ledSet = true;
-    }
-    delay(1000);
+void decodeRC5() {
+	if(++g_rc5timer > RC5_PULSE_MAX) { 	// Timeout?
+		if(g_rc5tmp & 0x2000) {			// Code valid?
+			g_rc5code = g_rc5tmp;
+			g_rc5toggle = g_rc5tmp>>11&0x01;
+		}
+		g_rc5tmp = 0;
+	}
+	if( (g_rc5lastlevel ^ PINB) & (1<<PB1) ) {	// Pinchange?
+		g_rc5lastlevel = ~g_rc5lastlevel;
+		
+		if(g_rc5timer < RC5_PULSE_MIN) {	
+			g_rc5tmp = 0;
+		}
+		
+		if(!g_rc5tmp || g_rc5timer > RC5_PULSE_1_2) {
+			g_rc5tmp = g_rc5tmp<<1;
+			if( !(g_rc5lastlevel&(1<<PB1)) )
+				g_rc5tmp |= 1;
+			g_rc5timer = 0;
+		}
+	}
 }
 
 // is called every 100µs
 ISR (TIMER2_COMPA_vect) {
-    if (++count > 10000) {
-        toggleLED(LED_BLUE);
-        count = 0;
-    }
+    decodeRC5();
     sei();
 }

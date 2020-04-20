@@ -8,5 +8,6 @@
 #include "sensors.h"
 #include "maus.h"
 #include "timer.h"
+#include "rc5.h"
 
 #endif

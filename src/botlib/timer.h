@@ -5,9 +5,7 @@
 #include <util/delay.h>
 #include "defines.h"
 
-#define F_CPU	16000000L	/*!< CPU-Frequenz [Hz] */
-#define XTAL	F_CPU		/*!< CPU-Frequenz [Hz] */
-#define TIMER_2_CLOCK 5619
+#define FERNBED PB1
 
 void initTimer();
 

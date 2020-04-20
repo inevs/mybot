@@ -19,10 +19,11 @@ int main(void) {
     setup();
     sei();
 
-    uint8_t val = ((XTAL/64/TIMER_2_CLOCK) - 1);
-
     while(1) {
-        lcdPrintf("val = %d", val);
+       lcdSetCursor(0, 0); lcdPrintf("Command = %d", getRC5Cmd());
+       lcdSetCursor(1, 0); lcdPrintf("Address = %d", getRC5Addr());
+       lcdSetCursor(2, 0); lcdPrintf("rc5toggle = %d", getRC5Toggle());
+       delay(1000);
     }
     
     return 0;
