@@ -18,26 +18,32 @@ void initTimer() {
     initRC5();
 }
 
+bool isTimeout() {
+    return g_rc5ImpulseCount > RC5_PULSE_MAX;
+}
+
 void decodeRC5() {
-	if(++g_rc5timer > RC5_PULSE_MAX) { 	// Timeout?
-		if(g_rc5tmp & 0x2000) {			// Code valid?
-			g_rc5code = g_rc5tmp;
-			g_rc5toggle = g_rc5tmp>>11&0x01;
+    g_rc5ImpulseCount++;
+
+	if(!isTimeout()) {
+		if(g_rc5receive & 0x2000) {			// Code valid?
+			g_rc5code = g_rc5receive;
+			g_rc5toggle = g_rc5receive >> 11 & 0x01;
 		}
-		g_rc5tmp = 0;
+		g_rc5receive = 0;
 	}
-	if( (g_rc5lastlevel ^ PINB) & (1<<PB1) ) {	// Pinchange?
+	if( (g_rc5lastlevel ^ PINB) & (1 << PB1) ) {	// Pinchange on PINB1
 		g_rc5lastlevel = ~g_rc5lastlevel;
 		
-		if(g_rc5timer < RC5_PULSE_MIN) {	
-			g_rc5tmp = 0;
+		if(g_rc5ImpulseCount < RC5_PULSE_MIN) {	
+			g_rc5receive = 0;
 		}
 		
-		if(!g_rc5tmp || g_rc5timer > RC5_PULSE_1_2) {
-			g_rc5tmp = g_rc5tmp<<1;
-			if( !(g_rc5lastlevel&(1<<PB1)) )
-				g_rc5tmp |= 1;
-			g_rc5timer = 0;
+		if(!g_rc5receive || g_rc5ImpulseCount > RC5_PULSE_1_2) {
+			g_rc5receive = g_rc5receive<<1;
+			if( !(g_rc5lastlevel & (1 << PB1)) )
+				g_rc5receive |= 1;
+			g_rc5ImpulseCount = 0;
 		}
 	}
 }

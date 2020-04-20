@@ -13,8 +13,8 @@
 #define clearRC5Code() (g_rc5code = 0)
 
 uint8_t g_rc5lastlevel;	// last pin value (high or low)
-uint8_t g_rc5timer; 	// timer vor timeout
-uint16_t g_rc5tmp; 		// temp for receiving
+uint8_t g_rc5ImpulseCount; 	// timer vor timeout
+uint16_t g_rc5receive; 	// temp for receiving
 uint16_t g_rc5code;		// complete rc5 string
 int8_t g_rc5toggle;		// toggle bit
 
