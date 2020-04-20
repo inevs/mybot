@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #include <util/delay.h>
+#include <avr/interrupt.h>
 
 #include "botlib/botlib.h"
 #include "botlib/tests.h"
@@ -30,34 +31,29 @@ void toggleLED(uint8_t nr) {
     delay(1000);
 }
 
-// ISR (TIMER2_COMPA_vect) {
-//      setLed(2);
-//      toggleLED(1);
-//      __builtin_avr_sei();
-//  }
+ISR (TIMER2_COMPA_vect) {
+    toggleLED(LED_BLUE);
+    sei();
+ }
 
 
 void setupTimer() {
-    TCNT2 = 0x00;
-    TCCR2A = 0x02; // CTC Mode
-    TCCR2B = 0x03; // Prescaler 64
-    OCR2A  = 100;
+    TCCR2A = 0x42;
+    TCCR2B = 0x05;
+    TCNT2 = 0;
+    OCR2A = 240;
 
     TIMSK2 = 0x02;
-    __builtin_avr_sei();
 }
 
 int main(void) {
 
     setup();
-    // setupTimer();
+    setupTimer();
 
+    sei();
 
-    while(1) {
-        setLed(3);
-        delay(1000);
-        clearLed(3);
-        delay(1000);
+    while(1) {      
     }
     
     return 0;
