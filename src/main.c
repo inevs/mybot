@@ -20,6 +20,7 @@ int main(void) {
     sei();
 
     while(1) {      
+        testLCD();
     }
     
     return 0;

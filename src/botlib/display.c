@@ -12,21 +12,21 @@ void lcdSend(char data, int mode);
 
 void initLcd() {
 	// Set outputs for SDI, register RCLK, SRCLK
-	DDRC |= (1 << PC0) | (1 << PC1) | (1 << PC2);
+	DDRC |= (1 << SDI) | (1 << RCLK) | (1 << SRCLK);
 
 	_delay_ms(40);
 
 	lcdsendcmd(0x38);	// 2-line mode, 5x8pixel per character
-	_delay_us(40);		// Sleep 40µs
+	_delay_us(40);		
 
-	lcdsendcmd(0x0C);	// Disply on, Cursor off, blink off
-	_delay_us(40);		// Sleep 40µs
+	lcdsendcmd(0x0C);	// Display on, Cursor off, blink off
+	_delay_us(40);		
 
 	lcdsendcmd(0x01);	// Display clear
-	_delay_ms(1.6);		// Sleep 1.52ms
+	_delay_ms(1.6);		
 
 	lcdsendcmd(0x06);	// EntryMode increment, entire shift off
-	_delay_ms(1.5);		// Sleep 1.5ms
+	_delay_ms(1.5);		
 }
 
 void lcdSetCursor(uint8_t row, uint8_t pos) {
