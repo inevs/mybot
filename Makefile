@@ -7,7 +7,8 @@ OBJECTS    = src/main.o \
 			 src/botlib/display.o \
 			 src/botlib/sensors.o \
 			 src/botlib/maus.o \
-			 src/botlib/tests.o 
+			 src/botlib/tests.o \
+			 src/botlib/timer.o
 			 # src/motor.o \
 			 # src/shift.o \
 			 # src/ports.o

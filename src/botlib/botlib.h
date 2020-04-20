@@ -7,5 +7,6 @@
 #include "display.h"
 #include "sensors.h"
 #include "maus.h"
+#include "timer.h"
 
 #endif

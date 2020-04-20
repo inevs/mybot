@@ -11,5 +11,6 @@ void testKantenSensoren();
 void testAbstandsSensoren();
 void testLinienSensors();
 void testMouseSensor();
+void testInfrared();
 
 #endif

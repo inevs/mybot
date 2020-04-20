@@ -11,12 +11,12 @@ void initLeds() {
 }
 
 void setLed(uint8_t nr) {
-	led_status |= nr;
+	led_status |= (1 << nr);
 	shiftLED(led_status);
 }
 
 void clearLed(uint8_t nr) {
-	led_status &= ~nr;
+	led_status &= ~(1 << nr);
 	shiftLED(led_status);
 }
 

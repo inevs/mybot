@@ -11,22 +11,22 @@ void delay(int time) {
 void testLED(void) {
 	uint8_t i;
 	for (i = 0; i < 8; i++) {
-		setLed((1 << i));
+		setLed(i);
 		delay(5000);
-		clearLed((1 << i));
+		clearLed(i);
 		delay(5000);
 	}
 }
 
 void testLCD(void) {
 	lcdSetCursor(0, 0);
-	lcdPrintf("Hallo");
+	lcdPrintf("Hallo Sven!");
 	lcdSetCursor(1, 0);
-	lcdPrintf("mein Schatz");
+	lcdPrintf("Gratuliere");
 	lcdSetCursor(2, 0);
-	lcdPrintf("ich liebe dich");
+	lcdPrintf("Das Display scheint");
 	lcdSetCursor(3, 0);
-	lcdPrintf("XOXOXOXO");
+	lcdPrintf("zu funktionieren");
 }
 
 void testLichtSensoren() {
@@ -93,4 +93,8 @@ void testMouseSensor() {
 	lcdSetCursor(1, 0);
 	lcdPrintf("Y: %d", readDY());
 	delay(500);
+}
+
+void testInfrared() {
+	
 }
