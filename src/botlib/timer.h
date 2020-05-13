@@ -9,4 +9,4 @@
 
 void initTimer();
 
-#endif //SRC_BOTLIB_TIMER_H_
+#endif

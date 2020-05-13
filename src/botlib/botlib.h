@@ -9,5 +9,6 @@
 #include "maus.h"
 #include "timer.h"
 #include "rc5.h"
+#include "motor.h"
 
 #endif

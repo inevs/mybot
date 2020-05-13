@@ -8,10 +8,8 @@ OBJECTS    = src/main.o \
 			 src/botlib/sensors.o \
 			 src/botlib/maus.o \
 			 src/botlib/tests.o \
-			 src/botlib/timer.o
-			 # src/motor.o \
-			 # src/shift.o \
-			 # src/ports.o
+			 src/botlib/timer.o \
+			 src/botlib/motor.o
 
 AVRDUDE = avrdude $(PROGRAMMER) -p $(DEVICE)
 COMPILE = avr-gcc -Wall -Os -DF_CPU=$(CLOCK) -mmcu=$(DEVICE)
