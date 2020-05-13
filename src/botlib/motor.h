@@ -11,7 +11,7 @@ typedef enum {
     backward
 } MotorDirection;
 
-void motorInit();
+void initMotor();
 void setSpeed(int8_t left, int8_t right);
 
 #endif

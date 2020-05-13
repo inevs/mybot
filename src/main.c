@@ -12,13 +12,13 @@ void setup() {
     enableDigitalSensors();
     enableAnalogSensors();
     initTimer();
+    initMotor();
 }
 
 int main(void) {
 
     setup();
     sei();
-    motorInit();
     setSpeed(0, 0);
 
     while(1) {

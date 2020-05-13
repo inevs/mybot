@@ -8,7 +8,7 @@ void motor_enable() {
 	TCCR1B |= (1<<CS10);
 }
 
-void motorInit() {
+void initMotor() {
 	// Set pins
 	DDRC |= (1<<PC6) | (1<<PC7);
 	DDRD |= (1<<PD4) | (1<<PD5);
