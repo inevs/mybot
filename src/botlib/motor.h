@@ -12,6 +12,6 @@ typedef enum {
 } MotorDirection;
 
 void motorInit();
-void setMotorSpeed(Motor motor, int8_t power);
+void setSpeed(int8_t left, int8_t right);
 
 #endif

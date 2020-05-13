@@ -19,8 +19,7 @@ int main(void) {
     setup();
     sei();
     motorInit();
-    setMotorSpeed(left, 0);
-    setMotorSpeed(right, 0);
+    setSpeed(0, 0);
 
     while(1) {
        lcdSetCursor(0, 0); lcdPrintf("Command = %d", getRC5Cmd());

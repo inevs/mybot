@@ -43,21 +43,21 @@ void setMotorDirection(Motor motor, MotorDirection direction) {
 	}
 }
 
-void setMotorSpeed(Motor motor, int8_t speed) {
-	if (speed < 0) {
-		setMotorDirection(motor, backward);
-		speed *= -1;
-	} else if (speed > 0) {
-		setMotorDirection(motor, forward);
+void setSpeed(int8_t leftSpeed, int8_t rightSpeed) {
+    if (leftSpeed < 0) {
+        setMotorDirection(left, backward);
+        leftSpeed *= -1;
+    } else {
+        setMotorDirection(left, forward);
     }
-	
-	if (motor == left) {
-		OCR1AL = g_motorMinPower + ((uint16_t)(g_motorMaxPower - g_motorMinPower) * speed / 100);
-	} else if (motor == right) {
-		OCR1BL = g_motorMinPower + ((uint16_t)(g_motorMaxPower - g_motorMinPower) * speed / 100);
-	}
 
-	if (speed > 0) {
-		motor_enable();
+    if (rightSpeed < 0) {
+        setMotorDirection(right, backward);
+        rightSpeed *= -1;
+    } else {
+        setMotorDirection(right, forward);
     }
+
+	OCR1AL = g_motorMinPower + ((uint16_t)(g_motorMaxPower - g_motorMinPower) * leftSpeed / 100);
+	OCR1BL = g_motorMinPower + ((uint16_t)(g_motorMaxPower - g_motorMinPower) * rightSpeed / 100);
 }
