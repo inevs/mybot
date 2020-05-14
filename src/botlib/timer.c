@@ -18,14 +18,8 @@ void initTimer() {
     initRC5();
 }
 
-bool isTimeout() {
-    return g_rc5ImpulseCount > RC5_PULSE_MAX;
-}
-
 void decodeRC5() {
-    g_rc5ImpulseCount++;
-
-	if(!isTimeout()) {
+	if(++g_rc5ImpulseCount > RC5_PULSE_MAX) {
 		if(g_rc5receive & 0x2000) {			// Code valid?
 			g_rc5code = g_rc5receive;
 			g_rc5toggle = g_rc5receive >> 11 & 0x01;
