@@ -19,9 +19,10 @@ int main(void) {
 
     setup();
     sei();
+    bool toggle = 0;
 
     while(1) {
-        testInfrared();
+        testAll();
     }
     
     return 0;
